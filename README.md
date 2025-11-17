@@ -23,10 +23,74 @@ __Algorithm__:
 4. Generate Carrier Signal: Define the carrier signal as a cosine wave. 
 5. Modulate Signal: Apply the AM formula to obtain the modulated signal. 
 6. Plot the Signals: Use Matplotlib to plot the message signal, carrier signal, and modulated signal.
+program:
+```
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameters
+Am = 13.4      # Message amplitude
+Ac = 26.8       # Carrier amplitude
+fm = 460       # Message frequency
+fc = 4600        # Carrier frequency
+fs = 20000      # Sampling frequency (must be high for smooth signal)
+
+t = np.arange(0, 0.01, 1/fs)   # Time vector
+
+# Message Signal
+message = Am * np.cos(2 * np.pi * fm * t)
+
+# Carrier Signal
+carrier = Ac * np.cos(2 * np.pi * fc * t)
+
+# Modulation Index
+m = Am / Ac
+
+# AM Modulated Signal
+am_signal = Ac * (1 + m * np.cos(2 * np.pi * fm * t)) * np.cos(2 * np.pi * fc * t)
+
+# Demodulation (Envelope Detector)
+demodulated = np.abs(am_signal)
+
+# Plotting
+plt.figure(figsize=(12,10))
+
+plt.subplot(4,1,1)
+plt.plot(t, message)
+plt.title("Message Signal")
+plt.xlabel("Time")
+plt.ylabel("Amplitude")
+
+plt.subplot(4,1,2)
+plt.plot(t, carrier)
+plt.title("Carrier Signal")
+plt.xlabel("Time")
+plt.ylabel("Amplitude")
+
+plt.subplot(4,1,3)
+plt.plot(t, am_signal)
+plt.title("AM Modulated Signal")
+plt.xlabel("Time")
+plt.ylabel("Amplitude")
+
+plt.subplot(4,1,4)
+plt.plot(t, demodulated)
+plt.title("Demodulated Signal (Envelope)")
+plt.xlabel("Time")
+plt.ylabel("Amplitude")
+
+plt.tight_layout()
+plt.show()
+```
 
  __Output__:
+ ![WhatsApp Image 2025-11-17 at 2 06 06 PM](https://github.com/user-attachments/assets/6e0ebb9d-361a-4326-a641-cff5ee81eab1)
+
+ 
+
 
 
  __Result__:
+ The program successfully implemented Amplitude Modulation (AM) using Python's NumPy and Matplotlib libraries.
 
 
