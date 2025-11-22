@@ -92,5 +92,7 @@ plt.show()
 
  __Result__:
  The program successfully implemented Amplitude Modulation (AM) using Python's NumPy and Matplotlib libraries.
+ ![WhatsApp Image 2025-11-22 at 10 48 48 PM](https://github.com/user-attachments/assets/826cf848-2723-47f8-973f-5a6499b15844)
+
 
 
